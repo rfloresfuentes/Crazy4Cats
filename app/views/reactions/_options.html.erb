@@ -1,0 +1,7 @@
+<div class="container-fluid">
+  
+    <% Reaction.kinds.each do |kind| %>
+      <%= button_to "#{kind}", user_reaction_path(post_id: @post.id, kind: kind), method: :post %>
+    <% end %>
+  
+</div>

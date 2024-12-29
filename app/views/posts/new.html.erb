@@ -1,0 +1,19 @@
+<% content_for :title, "Nueva Historia" %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <h1 class="text-center mb-4">Nueva Historia</h1>
+
+          <%= render "form", post: @post %>
+
+          <div class="text-center mt-4">
+            <%= link_to "Volver a Historias", posts_path, class: "btn btn-secondary btn-sm" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

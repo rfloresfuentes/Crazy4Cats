@@ -1,0 +1,51 @@
+<div class="container my-5">
+  <p class="text-success text-center"><%= notice %></p>
+
+  <h1 class="mb-4 text-center display-4"><%= @post.title %></h1>
+
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <p class="fs-5"><%= @post.content %></p>
+    </div>
+    <div class="d-flex justify-content-between mb-4">
+      <div>
+        <%= render 'reactions/options' %>
+      </div>
+      <div>
+        <%= render 'reactions/counters' %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="d-flex justify-content-center m-4">
+      <%= link_to "Comentar", new_comment_path(@comment), class: "btn btn-outline-secondary btn-sm" %>
+      <%= link_to "Volver", posts_path, class: "btn btn-outline-secondary btn-sm" %>
+      <% if user_signed_in? && current_user.id == @post.user_id %>
+        <%= link_to "Modificar", edit_post_path(@post), class: "btn btn-outline-warning btn-sm" %>
+        <%= link_to "Eliminar Historia", @post, method: :delete, data: { confirm: "¿Está seguro(a) de que desea eliminar esta Historia?" }, class: "btn btn-outline-danger btn-sm" %>
+      <% end %>
+  </div>
+
+  
+  <h4 class="mb-3 text-center">Comentarios</h4>
+  <div class="card">
+    <div class="card-body">
+      <% if @comments.any? %>
+        <% @comments.each do |comment| %>
+          <div class="border-bottom pb-2 mb-3">
+            <div class="d-flex align-items-center">
+            <% if comment.user.present? %>
+              <h5 class="mb-0"><%= comment.user.name %></h5>
+            <% else %>
+              <h5 class="mb-0">Anónimo</h5>
+            <% end %>
+            </div>
+            <p class="mt-2"><%= comment.content %></p>
+            <%= link_to "Ver este Comentario", comment_path(comment), class: "btn btn-secondary btn-sm" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

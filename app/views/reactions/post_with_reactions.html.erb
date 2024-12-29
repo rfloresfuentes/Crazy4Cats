@@ -1,0 +1,25 @@
+<div class="container my-5">
+  <h1 class="text-center mb-4">Reacciones</h1>
+
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-6 col-lg-6 mb-3">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h3 class="card-title"><%= post.title %></h3>
+            <% if post.reactions.find_by(user_id: current_user.id) %>
+               <p class="card-text">
+                  Tu reacción: <strong><%= post.reactions.find_by(user_id: current_user.id).kind.capitalize %></strong>
+                </p>
+            <% else %>
+              <p class="card-text text-muted">Sin evaluar todavía</p>
+            <% end %>
+            <div class="d-grid">
+              <%= link_to "Historia", post_path(post), class: "btn btn-outline-primary btn-sm" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

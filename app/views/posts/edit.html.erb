@@ -1,0 +1,12 @@
+<% content_for :title, "Editar Historia" %>
+
+<h1>Editar Historia</h1>
+
+<%= render "form", post: @post %>
+
+<br>
+
+<div>
+  <%= link_to "Mostrar esta Historia", @post, class: "btn btn-outline-secondary btn-sm" %> 
+  <%= link_to "Volver", posts_path, class: "btn btn-outline-secondary btn-sm" %>
+</div>

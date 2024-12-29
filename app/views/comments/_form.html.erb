@@ -1,0 +1,14 @@
+<%= form_with(model: [@post, @comment]) do |f| %>
+  <div>
+    <%= f.label :post_id, style: "display: block" %>
+    <%= f.collection_select :post_id, @posts, :id, :title, { include_blank: "Elige un post..." } %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :content, "Comentario", class: "form-label" %>
+    <%= f.text_area :content, class: "form-control", rows: 3 %>
+  </div>
+
+  <div class="d-grid">
+    <%= f.submit "Enviar comentario", class: "btn btn-outline-secondary btn-sm" %>
+  </div>
+<% end %>
